@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Chatbox</title>
+    
+    <!-- Google Material Icons (Symbols) -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <button id="chatbot-toggler">
+        <span class="material-symbols-outlined">mode_comment</span>
+        <span class="material-symbols-outlined">close</span>
+    </button>
+
+    <!-- Chatbot Popup -->
+    <div class="chatbot-popup" id="chatbot">
+        <!-- Chatbot Header -->
+        <div class="chat-header">
+            <div class="header-info">
+                <img src="Robot_pic.png" alt="Chatbot" class="chatbot-avatar" width="80px" height="80px">
+                <h2 class="logo-text">Chatbot</h2>
+            </div>
+            <button class="icon-btn" id="close-chat">
+                <span class="material-symbols-outlined">keyboard_arrow_down</span>
+            </button>
+        </div>
+
+        <!-- Chatbot Body -->
+        <div class="chat-body">
+            <div class="message bot-message">
+                <img src="Robot_pic.png" alt="Chatbot" class="chatbot-avatar" width="80px" height="80px">
+                <div class="message-text">Hey there 👋 <br>How can I help you?</div>
+            </div>
+        </div>
+
+        <!-- Chatbot Footer -->
+        <div class="chat-footer">
+            <form class="chat-form">
+                <textarea placeholder="Message..." class="message-input" required></textarea>
+
+                <div class="chat-controls">
+                    <button type="button" class="icon-btn" id="emoji-picker-btn">
+                        <span class="material-symbols-outlined">sentiment_satisfied</span>
+                    </button>
+                    <input type="file" id="file-input" class="file-upload" hidden accept="image/*">
+                    <button type="button" id="upload-file-btn" class="material-symbols-outlined">
+                        attach_file
+                    </button>
+                    <button type="submit" class="icon-btn" id="send-message-btn">
+                        <span class="material-symbols-outlined">arrow_upward</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Emoji Picker -->
+    <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
