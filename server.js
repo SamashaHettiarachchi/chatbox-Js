@@ -16,29 +16,28 @@ const API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1/models/${MODEL_NAME}:generateContent`;
 
 app.post("/chat", async (req, res) => {
-  if (!API_KEY)
-    return res.status(500).json({ error: "Missing Gemini API Key" });
+    if (!API_KEY) return res.status(500).json({ error: "Missing Gemini API Key" });
 
-  try {
-    const response = await fetch(`${GEMINI_API_URL}?key=${API_KEY}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: req.body.message }] }],
-      }),
-    });
+    try {
+        const response = await fetch(`${GEMINI_API_URL}?key=${API_KEY}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                contents: [{ parts: [{ text: req.body.message }] }]
+            })
+        });
 
-    const data = await response.json();
-    if (!response.ok || !data.candidates) {
-      throw new Error(data.error?.message || "Gemini API error");
+        const data = await response.json();
+        if (!response.ok || !data.candidates) {
+            throw new Error(data.error?.message || "Gemini API error");
+        }
+
+        res.json({ response: data.candidates[0].content.parts[0].text });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
-
-    res.json({ response: data.candidates[0].content.parts[0].text });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
