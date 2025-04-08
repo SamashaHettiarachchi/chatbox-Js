@@ -8,7 +8,7 @@ const closeChatbot = document.querySelector("#close-chat");
 const uploadFileButton = document.querySelector("#upload-file-btn");
 
 // API setup - using local server
-const API_URL = "http://192.168.102.36:3000/chat";  // Use your local IP
+const API_URL = "";  // Use your local IP
 
 
 const userData = {
